@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,8 @@ using UnityEngine.UI;
 /// </summary>
 public class LoginWind : MonoBehaviour
 {
-    public InputField iptAcct;
-    public InputField iptPass;
+    public TMP_InputField iptAcct;
+    public TMP_InputField iptPass;
     public Button btnEnter;
     public Button btnNotice;
     public void InitWnd()
