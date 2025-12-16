@@ -6,19 +6,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingWind : MonoBehaviour
+public class LoadingWind : WindowRoot
 {
     public TextMeshProUGUI txtTips;
     public Image ImgFG;
     public Image imgPoint;
-    public TextMeshProUGUI txtprg;
+    public TextMeshProUGUI txtPrg;
 
     private float fgWidth;
     public void InitWind()
     {
         fgWidth = ImgFG.GetComponent<RectTransform>().sizeDelta.x;
-        txtprg.text = "这是一个提示";
-        txtprg.text = "0%";
+        SetText(txtTips, "这是一条游戏Tips");
+        SetText(txtPrg, "0%");
         ImgFG.fillAmount = 0;
         imgPoint.transform.localPosition = new Vector3(-545f, 0, 0);
         
@@ -26,7 +26,7 @@ public class LoadingWind : MonoBehaviour
 
     public void SetProgress(float prg)
     {
-        txtprg.text = (int)(prg * 100) + "%";
+        SetText(txtPrg, (int)(prg * 100) + "%");
         ImgFG.fillAmount = prg;
         
         float posx=prg * fgWidth - 545;

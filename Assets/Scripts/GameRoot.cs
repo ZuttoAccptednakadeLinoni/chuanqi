@@ -20,8 +20,11 @@ public class GameRoot : MonoBehaviour
     {
         ResSvc res = GetComponent<ResSvc>();
         res.InitSvc();
+        AudioSvc audio = GetComponent<AudioSvc>();
+        audio.InitSvc();
         LoginSys login = GetComponent<LoginSys>();
         login.InitSys();
+        login.EnterLogin();
     }
     // Update is called once per frame
     void Update()
