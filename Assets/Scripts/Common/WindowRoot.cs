@@ -7,13 +7,13 @@ using UnityEngine.UI;
 /****************************************************
     文件：WindowRoot.cs
     功能：UI界面基类
-*****************************************************/
+*****************************************************/         
 public class WindowRoot : MonoBehaviour
 {
     // Start is called before the first frame update
     protected ResSvc resSvc = null;
     protected AudioSvc audioSvc = null;
-    public void SetWndState(bool isActive = true) {
+    public void SetWndState(bool isActive = true) {//设置窗口可见
         if (gameObject.activeSelf != isActive) {
             SetActive(gameObject, isActive);
         }
@@ -26,7 +26,7 @@ public class WindowRoot : MonoBehaviour
     }
     protected virtual void InitWnd() {
         resSvc = ResSvc.Instance;
-        //audioSvc = AudioSvc.Instance;
+         audioSvc = AudioSvc.Instance;
     }
 
     protected virtual void ClearWnd() {

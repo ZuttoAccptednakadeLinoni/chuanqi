@@ -18,8 +18,9 @@ public class ResSvc : MonoBehaviour
     }
 
     public Action prgCB = null;
-    public void AsyncLoadScene(string scenename)
+    public void AsyncLoadScene(string scenename, Action loaded)
     {
+        GameRoot.Instance.loadingWind.SetWndState();
         AsyncOperation sceneAsync = SceneManager.LoadSceneAsync(scenename);
         prgCB = () =>
         {
@@ -27,6 +28,9 @@ public class ResSvc : MonoBehaviour
             GameRoot.Instance.loadingWind.SetProgress(val);
             if (val == 1)
             {
+                if (loaded != null) {
+                    loaded();
+                }
                 prgCB = null;
                 sceneAsync = null;
                 GameRoot.Instance.loadingWind.gameObject.SetActive(false);

@@ -9,6 +9,7 @@ public class LoginSys : SystemRoot
 {
     public static LoginSys Instance = null;
     public LoginWind loginWnd;
+    
     /// <summary>
     /// 初始化
     /// </summary>
@@ -23,13 +24,13 @@ public class LoginSys : SystemRoot
 ///
 /// 进入登录场景
 /// </summary>
-    public void EnterLogin()
+
+public void EnterLogin()
     {
-        GameRoot.Instance.loadingWind.gameObject.SetActive(true);
-        //异步加载，显示进度条，加载完后打开登录界面
-        GameRoot.Instance.loadingWind.InitWind();
-        ResSvc.Instance.AsyncLoadScene(Constants.SceneLogin);
-        audioSvc.PlayBGMusic(Constants.BGLogin);
-        
+        resSvc.AsyncLoadScene(Constants.SceneLogin, () => {
+            //加载完成以后再打开注册登录界面
+            loginWnd.SetWndState();
+            audioSvc.PlayBGMusic(Constants.BGLogin);
+        });
     }
 }

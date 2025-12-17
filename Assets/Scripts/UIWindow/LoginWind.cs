@@ -31,7 +31,7 @@ public class LoginWind : WindowRoot
     /// 点击进入游戏
     /// </summary>
     public void ClickEnterBtn() {
-        //audioSvc.PlayUIAudio(Constants.UILoginBtn);
+        audioSvc.PlayUIAudio(Constants.UILoginBtn);
 
         string acct = iptAcct.text;
         string pass = iptPass.text;
