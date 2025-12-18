@@ -31,6 +31,8 @@ public void EnterLogin()
             //加载完成以后再打开注册登录界面
             loginWnd.SetWndState();
             audioSvc.PlayBGMusic(Constants.BGLogin);
+            GameRoot.AddTips(("load Done"));
+            GameRoot.AddTips(("load"));
         });
     }
 }
