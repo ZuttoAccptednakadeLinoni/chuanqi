@@ -33,6 +33,8 @@ public void EnterLogin()
             audioSvc.PlayBGMusic(Constants.BGLogin);
             GameRoot.AddTips(("load Done"));
             GameRoot.AddTips(("load"));
+            GameRoot.AddTips(("load111"));
+            GameRoot.AddTips(("load31w"));
         });
     }
 }

@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -47,13 +48,14 @@ public class DynamicWnd : WindowRoot
         tipsAni.Play();
         //延时关闭激活状态
 
-        StartCoroutine(AniPlayDone(clip.length, () => {
+        AniPlayDone(clip.length, () => {
             SetActive(txtTips, false);
             isTipsShow = false;
-        }));
+        });
     }
-    private IEnumerator AniPlayDone(float sec, Action cb) {
-        yield return new WaitForSeconds(sec);
+    private async void AniPlayDone(float sec, Action cb) {
+        Debug.Log(sec);
+        await UniTask.Delay((int)(sec * 1000));
         if (cb != null) {
             cb();
         }

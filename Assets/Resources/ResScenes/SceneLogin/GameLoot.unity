@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingWind: {fileID: 1672874927}
+  dynamicWnd: {fileID: 1009587839552008513}
 --- !u!114 &1098821585
 MonoBehaviour:
   m_ObjectHideFlags: 0
