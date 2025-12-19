@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,24 +19,26 @@ public class ResSvc : MonoBehaviour
     }
 
     public Action prgCB = null;
-    public void AsyncLoadScene(string scenename, Action loaded)
+    public async void AsyncLoadScene(string scenename, Action loaded)
     {
         GameRoot.Instance.loadingWind.SetWndState();
-        AsyncOperation sceneAsync = SceneManager.LoadSceneAsync(scenename);
-        prgCB = () =>
-        {
-            float val = sceneAsync.progress;
-            GameRoot.Instance.loadingWind.SetProgress(val);
-            if (val == 1)
+        await SceneManager.LoadSceneAsync(scenename).ToUniTask(
+            (Progress.Create<float>((p) =>
             {
-                if (loaded != null) {
-                    loaded();
+                GameRoot.Instance.loadingWind.SetProgress(p);
+                Debug.Log(p);
+                if (p *100>= 1)
+                {
+                    Debug.Log("加载完成");
+                    if (loaded != null) {
+                        loaded();
+                    }
+                    prgCB = null;
+                    GameRoot.Instance.loadingWind.gameObject.SetActive(false);
                 }
-                prgCB = null;
-                sceneAsync = null;
-                GameRoot.Instance.loadingWind.gameObject.SetActive(false);
-            }
-        };
+            })));
+ 
+        
 
     }
 
