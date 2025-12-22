@@ -16,16 +16,17 @@ public class LoginWind : WindowRoot
     public Button btnNotice;
     protected override void InitWnd() {
         base.InitWnd();
-
+        Debug.Log("!@#!@#");
+        iptAcct.text = "11111";
         //获取本地存储的账号密码
-        if (PlayerPrefs.HasKey("Acct") && PlayerPrefs.HasKey("Pass")) {
-            iptAcct.text = PlayerPrefs.GetString("Acct");
-            iptPass.text = PlayerPrefs.GetString("Pass");
-        }
-        else {
-            iptAcct.text = "";
-            iptPass.text = "";
-        }
+         if (PlayerPrefs.HasKey("Acct") && PlayerPrefs.HasKey("Pass")) {
+             iptAcct.text = PlayerPrefs.GetString("Acct");
+             iptPass.text = PlayerPrefs.GetString("Pass");
+         }
+         else {
+             iptAcct.text = "";
+             iptPass.text = "";
+         }
     }
     /// <summary>
     /// 点击进入游戏
@@ -43,16 +44,16 @@ public class LoginWind : WindowRoot
             //TODO 发送网络消息，请求登录
 
             //TO Remove
-            //LoginSys.Instance.RspLogin();
+            LoginSys.Instance.RspLogin();
         }
         else {
-           // GameRoot.AddTips("账号或密码为空");
+            GameRoot.AddTips("账号或密码为空");
         }
     }
 
     public void ClicKNoticeBtn() {
-        //audioSvc.PlayUIAudio(Constants.UIClickBtn);
+        audioSvc.PlayUIAudio(Constants.UIClickBtn);
 
-        //GameRoot.AddTips("功能正在开发中...");
+        GameRoot.AddTips("功能正在开发中...");
     }
 }

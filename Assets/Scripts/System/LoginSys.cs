@@ -9,7 +9,7 @@ public class LoginSys : SystemRoot
 {
     public static LoginSys Instance = null;
     public LoginWind loginWnd;
-    
+    public CreateWnd createWnd;
     /// <summary>
     /// 初始化
     /// </summary>
@@ -20,11 +20,9 @@ public class LoginSys : SystemRoot
         Debug.Log("Init LoginSys...");
     }
 
-/// <summary>
-///
-/// 进入登录场景
-/// </summary>
-
+    /// <summary>
+    /// 进入登录场景
+    /// </summary>
 public void EnterLogin()
     {
         resSvc.AsyncLoadScene(Constants.SceneLogin, () => {
@@ -36,5 +34,13 @@ public void EnterLogin()
             GameRoot.AddTips(("load111"));
             GameRoot.AddTips(("load31w"));
         });
-    }
+    }   
+    public void RspLogin() {
+             GameRoot.AddTips("登录成功");
+     
+             //打开角色创建界面
+             createWnd.SetWndState();
+             //关闭登录界面
+             loginWnd.SetWndState(false);
+         }
 }
