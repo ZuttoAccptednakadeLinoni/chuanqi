@@ -28,7 +28,7 @@ public void EnterLogin()
         resSvc.AsyncLoadScene(Constants.SceneLogin, () => {
             //加载完成以后再打开注册登录界面
             loginWnd.SetWndState();
-            audioSvc.PlayBGMusic(Constants.BGLogin);
+            //audioSvc.PlayBGMusic(Constants.BGLogin);
             GameRoot.AddTips(("load Done"));
             GameRoot.AddTips(("load"));
             GameRoot.AddTips(("load111"));

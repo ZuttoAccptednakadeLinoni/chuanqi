@@ -29,12 +29,20 @@ public class GameRoot : MonoBehaviour
     }
     private void Init()
     {
+        //服务模块初始化
+        NetSvc net = GetComponent<NetSvc>();
+        net.InitSvc();
         ResSvc res = GetComponent<ResSvc>();
         res.InitSvc();
         AudioSvc audio = GetComponent<AudioSvc>();
         audio.InitSvc();
+        
+        //业务系统初始化
         LoginSys login = GetComponent<LoginSys>();
         login.InitSys();
+        
+        
+        //进入登录场景并加载相应UI
         login.EnterLogin();
     }
     public static void AddTips(string tips) {

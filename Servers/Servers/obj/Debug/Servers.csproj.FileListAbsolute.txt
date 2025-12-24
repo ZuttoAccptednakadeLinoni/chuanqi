@@ -1,0 +1,4 @@
+F:\unitytest\chuanqi\chuanqi\Servers\Servers\obj\Debug\Servers.csproj.AssemblyReference.cache
+F:\unitytest\chuanqi\chuanqi\Servers\Servers\obj\Debug\Servers.Properties.Resources.resources
+F:\unitytest\chuanqi\chuanqi\Servers\Servers\obj\Debug\Servers.csproj.GenerateResource.cache
+F:\unitytest\chuanqi\chuanqi\Servers\Servers\obj\Debug\Servers.csproj.CoreCompileInputs.cache
