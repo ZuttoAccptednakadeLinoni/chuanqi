@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PErotocol;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,14 +35,22 @@ public class LoginWind : WindowRoot
     public void ClickEnterBtn() {
         audioSvc.PlayUIAudio(Constants.UILoginBtn);
 
-        string acct = iptAcct.text;
-        string pass = iptPass.text;
-        if (acct != "" && pass != "") {
+        string _acct = iptAcct.text;
+        string _pass = iptPass.text;
+        if (_acct != "" && _pass != "") {
             //更新本地存储的账号密码
-            PlayerPrefs.SetString("Acct", acct);
-            PlayerPrefs.SetString("Pass", pass);
+            PlayerPrefs.SetString("Acct", _acct);
+            PlayerPrefs.SetString("Pass", _pass);
 
             //TODO 发送网络消息，请求登录
+            GameMsg msg = new GameMsg {
+                cmd = (int)CMD.ReqLogin,
+                reqLogin = new ReqLogin {
+                    acct = _acct,
+                    pass = _pass
+                }
+            };
+            netSvc.SendMsg(msg);
 
             //TO Remove
             LoginSys.Instance.RspLogin();

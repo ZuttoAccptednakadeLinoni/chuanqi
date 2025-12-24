@@ -13,6 +13,7 @@ public class WindowRoot : MonoBehaviour
     // Start is called before the first frame update
     protected ResSvc resSvc = null;
     protected AudioSvc audioSvc = null;
+    protected NetSvc netSvc = null;
     public void SetWndState(bool isActive = true) {//设置窗口可见
         if (gameObject.activeSelf != isActive) {
             SetActive(gameObject, isActive);
@@ -26,7 +27,8 @@ public class WindowRoot : MonoBehaviour
     }
     protected virtual void InitWnd() {
         resSvc = ResSvc.Instance;
-         audioSvc = AudioSvc.Instance;
+        audioSvc = AudioSvc.Instance;
+        netSvc = NetSvc.Instance;
     }
 
     protected virtual void ClearWnd() {
